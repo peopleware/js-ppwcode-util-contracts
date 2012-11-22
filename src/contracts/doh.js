@@ -49,9 +49,9 @@ define(["dojo/_base/declare", "doh/main", "dojo/_base/lang"], function(declare, 
         }
       }
     }
-  }
+  };
 
-  doh.invars = doh.validateInvariants = function(subject) {
+  doh.validateInvariants = function(subject) {
     // TODO subject is a _Mixin (duck typing)
     doh.isNot(null, subject);
     doh.t("_c_invar" in subject);
@@ -72,9 +72,10 @@ define(["dojo/_base/declare", "doh/main", "dojo/_base/lang"], function(declare, 
         throw new doh._AssertFailure("invariant error: " + invar.testMethodForPrint + " (on " + subject.toString() + ")");
       }
     }
-  }
+  };
+  doh.invars = doh.validateInvariants;
 
-  doh.fail = doh.assertFailure = function(/*String?*/ hint, /*Error*/ error) {
+  doh.assertFailure = function(/*String?*/ hint, /*Error*/ error) {
     // summary:
     //    The test failed.
     var msg = "test failed";
@@ -83,13 +84,15 @@ define(["dojo/_base/declare", "doh/main", "dojo/_base/lang"], function(declare, 
     }
     throw new doh._AssertFailure(msg, hint);
   };
+  doh.fail = doh.assertFailure;
 
-  doh.exc = doh.unexpectedException = function(/*Error*/ exc) {
+  doh.unexpectedException = function(/*Error*/ exc) {
     // summary:
     //    exc was encountered, and this was unexpected
     var msg = "encountered an unexpected exception";
     throw new doh._AssertFailure(msg, exc);
   };
+  doh.exc = doh.unexpectedException;
 
   return doh;
 });
