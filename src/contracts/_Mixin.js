@@ -32,7 +32,7 @@ define(["dojo/_base/declare"], function(declare) {
       var pName;
       var s;
       if (arguments.length < 2) {
-        pName = subject
+        pName = subject;
         s = this;
       }
       else {
@@ -50,7 +50,7 @@ define(["dojo/_base/declare"], function(declare) {
       var pName;
       var s;
       if (arguments.length < 2) {
-        pName = subject
+        pName = subject;
         s = this;
       }
       else {
@@ -68,7 +68,7 @@ define(["dojo/_base/declare"], function(declare) {
       var pName;
       var s;
       if (arguments.length < 2) {
-        pName = subject
+        pName = subject;
         s = this;
       }
       else {
