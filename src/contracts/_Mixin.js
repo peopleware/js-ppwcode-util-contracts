@@ -83,6 +83,10 @@ define(["dojo/_base/declare"], function(declare) {
       else {
         return false;
       }
+    },
+
+    _c_ABSTRACT: function() {
+      throw "ABSTRACT";
     }
 
   });
