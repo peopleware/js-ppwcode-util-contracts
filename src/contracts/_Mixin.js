@@ -1,6 +1,6 @@
 define(["dojo/_base/declare"], function(declare) {
 
-  var _PrecontionViolationError = declare(null, {
+  var _PreconditionViolationError = declare(null, {
     instance: null,
     method: null,
     condition: null,
@@ -20,7 +20,7 @@ define(["dojo/_base/declare"], function(declare) {
 
     _c_pre: function(condition) {
       if (! condition()) {
-        throw new _PrecontionViolationError(this, null /* TODO method */, condition);
+        throw new _PreconditionViolationError(this, null /* TODO method */, condition);
       }
     },
 
@@ -57,7 +57,7 @@ define(["dojo/_base/declare"], function(declare) {
         pName = propName;
         s = subject;
       }
-      return this._c_prop(s, pName) && s[pName] != null;
+      return this._c_prop(s, pName) && s[pName] !== null;
     },
 
     _c_prop_mandatory_string: function(subject, propName) {
