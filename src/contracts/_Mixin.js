@@ -86,6 +86,21 @@ define(["dojo/_base/declare"], function(declare) {
     },
 
     _c_ABSTRACT: function() {
+      // summary:
+      //   use this to annotate a function as abstract
+      // description:
+      //   This method throws an exception "ABSTRACT".
+
+      //   An abstract method should be mentioned, to have a hook for documentation.
+      //   Yet, an meaningful implementation is not possible.
+      //   To detect errors early, and to avoid code inspection warnings, you
+      //   can call this body in the abstract method. Because the method should
+      //   be overwritten for every concrete subclass, this code should never be called.
+      //
+      //   Often, abstract methods also have parameters. These will not be used in the
+      //   body of the abstract method declaration (the hook for the documentation),
+      //   which will trigger code inspection warnings. To avoid these, you should
+      //   add those parameters as arguments to this call.
       throw "ABSTRACT";
     }
 
