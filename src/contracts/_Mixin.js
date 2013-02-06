@@ -85,6 +85,81 @@ define(["dojo/_base/declare"], function(declare) {
       }
     },
 
+    _c_prop_bool: function(subject, propName) {
+      // summary:
+      //   the property subject[propName] is defined, and if it is not-null, it is a bool
+      // description:
+      //   if there is only 1 argument, subject is taken to be this
+      var pName;
+      var s;
+      if (arguments.length < 2) {
+        pName = subject;
+        s = this;
+      }
+      else {
+        pName = propName;
+        s = subject;
+      }
+      var exists = this._c_prop(s, pName);
+      if (exists) {
+        var value = s[pName];
+        return value == null || typeof value === "boolean";
+      }
+      else {
+        return false;
+      }
+    },
+
+    _c_prop_string: function(subject, propName) {
+      // summary:
+      //   the property subject[propName] is defined, and if it is not-null, it is a string
+      // description:
+      //   if there is only 1 argument, subject is taken to be this
+      var pName;
+      var s;
+      if (arguments.length < 2) {
+        pName = subject;
+        s = this;
+      }
+      else {
+        pName = propName;
+        s = subject;
+      }
+      var exists = this._c_prop(s, pName);
+      if (exists) {
+        var value = s[pName];
+        return value == null || typeof value === "string" && value != "";
+      }
+      else {
+        return false;
+      }
+    },
+
+    _c_prop_array: function(subject, propName) {
+      // summary:
+      //   the property subject[propName] is defined, and if it is not-null, it is an Array
+      // description:
+      //   if there is only 1 argument, subject is taken to be this
+      var pName;
+      var s;
+      if (arguments.length < 2) {
+        pName = subject;
+        s = this;
+      }
+      else {
+        pName = propName;
+        s = subject;
+      }
+      var exists = this._c_prop(s, pName);
+      if (exists) {
+        var value = s[pName];
+        return value == null || value instanceof Array;
+      }
+      else {
+        return false;
+      }
+    },
+
     _c_ABSTRACT: function() {
       // summary:
       //   use this to annotate a function as abstract
