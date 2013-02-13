@@ -19,7 +19,7 @@ define(["dojo/_base/declare"], function(declare) {
     _c_invar: [],
 
     _c_pre: function(condition) {
-      if (! condition()) {
+      if (! condition.apply(this)) {
         throw new _PreconditionViolationError(this, null /* TODO method */, condition);
       }
     },
