@@ -1,4 +1,4 @@
-define(["dojo/_base/declare"], function(declare) {
+define(["dojo/_base/declare", "dojo/_base/lang"], function(declare, lang) {
 
   var _PreconditionViolationError = declare(null, {
     instance: null,
@@ -128,7 +128,7 @@ define(["dojo/_base/declare"], function(declare) {
       var exists = this._c_prop(s, pName);
       if (exists) {
         var value = s[pName];
-        return value == null || typeof value === "string" && value != "";
+        return value == null || lang.isString(value);
       }
       else {
         return false;
@@ -153,7 +153,32 @@ define(["dojo/_base/declare"], function(declare) {
       var exists = this._c_prop(s, pName);
       if (exists) {
         var value = s[pName];
-        return value == null || value instanceof Array;
+        return value == null || lang.isArray(value);
+      }
+      else {
+        return false;
+      }
+    },
+
+    _c_prop_function: function(subject, propName) {
+      // summary:
+      //   the property subject[propName] is defined, and if it is not-null, it is a Function
+      // description:
+      //   if there is only 1 argument, subject is taken to be this
+      var pName;
+      var s;
+      if (arguments.length < 2) {
+        pName = subject;
+        s = this;
+      }
+      else {
+        pName = propName;
+        s = subject;
+      }
+      var exists = this._c_prop(s, pName);
+      if (exists) {
+        var value = s[pName];
+        return value == null || lang.isFunction(value);
       }
       else {
         return false;
