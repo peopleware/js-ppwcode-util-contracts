@@ -5,25 +5,6 @@ define(["dojo/_base/declare", "doh/main",
 
     console.log("Loading ppwcode contracts doh extension");
 
-    // has and config setup
-
-    has.add("running-doh", 1, true, true);
-    has.add("dojo-debug-messages", 1, true, true);
-    has.add("running-from-localhost", function(global) {
-      return (global.location.hostname === "localhost" || global.location.hostname === "127.0.0.1"
-        || global.location.hostname === "ecachim.local");
-    });
-    has.add("remote-use-server", function(global) {
-      return ! has("running-from-localhost");
-    });
-
-    config.isDebug = true;
-    config["ppwcode-contracts-doh-initialization-done"] = true;
-
-
-
-
-
     var InvariantViolationError = declare(null, {
       instance: null,
       invariant: null,
