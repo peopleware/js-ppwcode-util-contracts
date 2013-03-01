@@ -3,6 +3,8 @@ define(["dojo/_base/declare", "doh/main",
   function(declare, doh,
            has, config, lang) {
 
+    console.log("Loading ppwcode contracts doh extension");
+
     // has and config setup
 
     has.add("running-doh", 1, true, true);
