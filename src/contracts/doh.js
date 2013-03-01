@@ -16,6 +16,7 @@ define(["dojo/_base/declare", "doh/main",
     });
 
     config.isDebug = true;
+    config["ppwcode-contracts-doh-initialization-done"] = true;
 
 
 
