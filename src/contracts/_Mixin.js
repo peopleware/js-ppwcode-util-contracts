@@ -1,6 +1,6 @@
 define(["dojo/_base/declare", "dojo/_base/lang"], function(declare, lang) {
 
-  var _PreconditionViolationError = declare(null, {
+  var _PreconditionViolationError = declare([Error], {
     instance: null,
     method: null,
     condition: null,
@@ -11,7 +11,7 @@ define(["dojo/_base/declare", "dojo/_base/lang"], function(declare, lang) {
     },
     toString: function() {
       return "Precondition violation: " + this.condition +
-        " (on " + this.instance + " in method " + this.method + ")";
+        " (on " + this.instance.toString() + " in method " + this.method + ")";
     }
   });
 
@@ -20,7 +20,7 @@ define(["dojo/_base/declare", "dojo/_base/lang"], function(declare, lang) {
 
     _c_pre: function(condition) {
       if (! condition.apply(this)) {
-        throw new _PreconditionViolationError(this, null /* TODO method */, condition);
+        throw new _PreconditionViolationError(this, this._c_pre.caller, condition);
       }
     },
 
