@@ -85,6 +85,31 @@ define(["dojo/_base/declare", "dojo/_base/lang"], function(declare, lang) {
       }
     },
 
+    _c_prop_number: function(subject, propName) {
+      // summary:
+      //   the property subject[propName] is defined, and if it is not-null, it is a number
+      // description:
+      //   if there is only 1 argument, subject is taken to be this
+      var pName;
+      var s;
+      if (arguments.length < 2) {
+        pName = subject;
+        s = this;
+      }
+      else {
+        pName = propName;
+        s = subject;
+      }
+      var exists = this._c_prop(s, pName);
+      if (exists) {
+        var value = s[pName];
+        return value == null || typeof value === "number";
+      }
+      else {
+        return false;
+      }
+    },
+
     _c_prop_bool: function(subject, propName) {
       // summary:
       //   the property subject[propName] is defined, and if it is not-null, it is a bool
