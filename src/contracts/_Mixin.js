@@ -210,6 +210,38 @@ define(["dojo/_base/declare", "dojo/_base/lang"], function(declare, lang) {
       }
     },
 
+    _c_prop_instance: function(subject, propName, Constructor) {
+      // summary:
+      //   the property subject[propName] is defined, and if it is not-null, it is an
+      //   instance of the Dojo declared type Constructor.
+      // description:
+      //   if there is only 1 argument, subject is taken to be this
+      var pName;
+      var s;
+      var Constr;
+      if (arguments.length < 3) {
+        pName = subject;
+        s = this;
+        Constr = propName;
+      }
+      else {
+        pName = propName;
+        s = subject;
+        Constr = Constructor;
+      }
+      if (! lang.isFunction(Constr)) {
+        throw "ERROR: Constructor needed to compare with."
+      }
+      var exists = this._c_prop(s, pName);
+      if (exists) {
+        var value = s[pName];
+        return value == null || (value.isInstanceOf && value.isInstanceOf(Constr));
+      }
+      else {
+        return false;
+      }
+    },
+
     _c_ABSTRACT: function() {
       // summary:
       //   use this to annotate a function as abstract
