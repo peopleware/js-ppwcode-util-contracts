@@ -40,7 +40,7 @@ define(["dojo/_base/declare", "dojo/_base/lang", "ppwcode/oddsAndEnds/js"],
           pName = propName;
           s = subject;
         }
-        return (pName in s);
+        return js.getAllKeys(s).some(function(k) {return k === pName;});
       },
 
       _c_prop_mandatory: function(subject, propName) {
