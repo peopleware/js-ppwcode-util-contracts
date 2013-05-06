@@ -111,6 +111,24 @@ define(["dojo/_base/declare", "dojo/_base/lang", "ppwcode/oddsAndEnds/js"],
         }
       },
 
+      _c_prop_int: function(subject, propName) {
+        // summary:
+        //   the property subject[propName] is defined, and if it is not-null, it is an integer
+        // description:
+        //   if there is only 1 argument, subject is taken to be this
+        var pName;
+        var s;
+        if (arguments.length < 2) {
+          pName = subject;
+          s = this;
+        }
+        else {
+          pName = propName;
+          s = subject;
+        }
+        return this._c_prop_number(s, pName) && js.isInt(s[pName]);
+      },
+
       _c_prop_bool: function(subject, propName) {
         // summary:
         //   the property subject[propName] is defined, and if it is not-null, it is a bool
