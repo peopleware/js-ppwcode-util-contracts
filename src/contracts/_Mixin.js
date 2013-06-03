@@ -5,10 +5,15 @@ define(["dojo/_base/declare", "dojo/_base/lang", "ppwcode/oddsAndEnds/js"],
       instance: null,
       method: null,
       condition: null,
-      constructor: function(instance, method, condition) {
+      arguments: null,
+      caller: null,
+      constructor: function(instance, method, caller, arguments, condition) {
         this.instance = instance;
         this.method = method;
+        this.caller = caller;
+        this.arguments = arguments;
         this.condition = condition;
+        console.info(this.stack);
       },
       toString: function() {
         return "Precondition violation: " + this.condition +
@@ -21,7 +26,7 @@ define(["dojo/_base/declare", "dojo/_base/lang", "ppwcode/oddsAndEnds/js"],
 
       _c_pre: function(condition) {
         if (! condition.apply(this)) {
-          throw new _PreconditionViolationError(this, this._c_pre.caller, condition);
+          throw new _PreconditionViolationError(this, this._c_pre.caller, this._c_pre.caller.caller, this._c_pre.caller.arguments, condition);
         }
       },
 
