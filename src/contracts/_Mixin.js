@@ -7,11 +7,11 @@ define(["dojo/_base/declare", "dojo/_base/lang", "ppwcode/oddsAndEnds/js"],
       condition: null,
       arguments: null,
       caller: null,
-      constructor: function(instance, method, caller, arguments, condition) {
+      constructor: function(instance, method, caller, callArguments, condition) {
         this.instance = instance;
         this.method = method;
         this.caller = caller;
-        this.arguments = arguments;
+        this.arguments = callArguments;
         this.condition = condition;
         console.info(this.stack);
       },
