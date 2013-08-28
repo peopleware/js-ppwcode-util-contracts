@@ -9,15 +9,15 @@ define(["dojo/_base/declare", "dojo/_base/lang", "ppwcode/oddsAndEnds/js"],
       caller: null,
       constructor: function(instance, method, caller, callArguments, condition) {
         this.instance = instance;
-        this.method = method;
-        this.caller = caller;
+        this.method = (method && method.nom) || method;
+        this.caller = (caller && caller.nom) || caller;
         this.arguments = callArguments;
         this.condition = condition;
         console.info(this.stack);
       },
       toString: function() {
         return "Precondition violation: " + this.condition +
-          " (on " + this.instance.toString() + " in method " + this.method + ")";
+          " (on " + this.instance.toString() + " in method " + this.method + ", called from " + this.caller + ")";
       }
     });
 
