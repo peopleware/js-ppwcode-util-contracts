@@ -1,4 +1,4 @@
-define(["dojo/_base/declare", "dojo/_base/lang", "ppwcode.util.oddsAndEnds/js"],
+define(["dojo/_base/declare", "dojo/_base/lang", "ppwcode-util-oddsAndEnds/js"],
   function(declare, lang, js) {
 
     var _PreconditionViolationError = declare([Error], {

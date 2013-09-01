@@ -1,5 +1,5 @@
 {
-    "name": "be.ppwcode.util.contracts",
+    "name": "be.ppwcode-util-contracts",
     "version": "0.1.0",
     "description": "First trials for design-by-contract in dojo.",
     "keywords": [
