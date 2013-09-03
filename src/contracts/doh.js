@@ -1,7 +1,5 @@
-define(["dojo/_base/declare", "doh/main",
-        "dojo/has", "dojo/_base/config", "dojo/_base/lang"],
-  function(declare, doh,
-           has, config, lang) {
+define(["dojo/_base/declare", "doh/main", "dojo/_base/lang"],
+  function(declare, doh, lang) {
 
     console.log("Loading ppwcode contracts doh extension");
 
