@@ -184,7 +184,32 @@ define(["dojo/_base/declare", "dojo/_base/lang", "ppwcode-util-oddsAndEnds/js"],
         }
       },
 
-      _c_prop_array: function(subject, propName) {
+        _c_prop_date: function(subject, propName) {
+          // summary:
+          //   the property subject[propName] is defined, and if it is not-null, it is a Date
+          // description:
+          //   if there is only 1 argument, subject is taken to be this
+          var pName;
+          var s;
+          if (arguments.length < 2) {
+            pName = subject;
+            s = this;
+          }
+          else {
+            pName = propName;
+            s = subject;
+          }
+          var exists = this._c_prop(s, pName);
+          if (exists) {
+            var value = s[pName];
+            return value == null || js.typeOf(value) === "date";
+          }
+          else {
+            return false;
+          }
+        },
+
+        _c_prop_array: function(subject, propName) {
         // summary:
         //   the property subject[propName] is defined, and if it is not-null, it is an Array
         // description:
