@@ -1,35 +1,53 @@
 {
-    "name": "be.ppwcode-util-contracts",
-    "version": "0.1.0",
-    "description": "First trials for design-by-contract in dojo.",
-    "keywords": [
-      "Design-by-contract",
-      "ppwcode",
-      "PeopleWare"
-    ],
-    "maintainers": [
-        {
-            "name": "Jan Dockx",
-            "email": "Jan_Dockx@peopleware.be"
-        }
-    ],
-    "contributors": [],
-    "bugs": {
-        "mail": "Jan_Dockx@peopleware.be"
+  "name": "be.ppwcode-util-contracts",
+  "version": "I 0.0",
+  "description": "First trials for design-by-contract in dojo.",
+  "keywords": [
+    "PeopleWare",
+    "ppwcode",
+    "util",
+    "Contracts",
+    "Design-by-contract"
+  ],
+  "maintainers": [
+    {
+      "name": "Jan Dockx",
+      "email": "Jan_Dockx@peopleware.be"
+    }
+  ],
+  "contributors": [
+    {
+      "name": "Jan Dockx",
+      "email": "Jan_Dockx@peopleware.be"
     },
-    "licenses": [
-        {
-            "type": "Apache-2.0",
-            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
-        }
-    ],
-    "repositories": [
-        {
-            "type": "svn",
-            "url": "https://ppwcode.googlecode.com/svn/javascript/"
-        }
-    ],
-    "dependencies": [
-    ],
-    "dojoBuild": "ppwcode_contracts.profile.js"
+    {
+      "name": "Tom Crommen",
+      "email": "Tom_Crommen@peopleware.be"
+    },
+    {
+      "name": "Mark Cuypers",
+      "email": "Mark_Cuypers@peopleware.be"
+    }
+  ],
+  "bugs": {
+    "mail": "Jan_Dockx@peopleware.be"
+  },
+  "licenses": [
+    {
+      "type": "Apache-2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  ],
+  "repositories": [
+    {
+      "type": "svn",
+      "url": "https://ppwcode.googlecode.com/svn/javascript/util/contracts/"
+    }
+  ],
+  "dependencies": [
+  ],
+  "os": ["linux", "macos", "win"],
+  "cpu": ["x86", "ppc", "x86_64"],
+  "engines": ["v8", "ejs", "node", "rhino"],
+  "dojoBuild": "ppwcode_contracts.profile.js"
 }
