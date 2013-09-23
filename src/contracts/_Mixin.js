@@ -1,5 +1,5 @@
-define(["dojo/_base/declare", "dojo/_base/lang", "ppwcode-util-oddsAndEnds/js"],
-  function(declare, lang, js) {
+define(["dojo/_base/declare", "dojo/_base/lang", "ppwcode-util-oddsAndEnds/js", "dojo/has"],
+  function(declare, lang, js, has) {
 
     var _PreconditionViolationError = declare([Error], {
       instance: null,
@@ -25,8 +25,10 @@ define(["dojo/_base/declare", "dojo/_base/lang", "ppwcode-util-oddsAndEnds/js"],
       _c_invar: [],
 
       _c_pre: function(condition) {
-        if (! condition.apply(this)) {
-          throw new _PreconditionViolationError(this, this._c_pre.caller, this._c_pre.caller.caller, this._c_pre.caller.arguments, condition);
+        if (has("ppwcode-contracts-precondition")) {
+          if (! condition.apply(this)) {
+            throw new _PreconditionViolationError(this, this._c_pre.caller, this._c_pre.caller.caller, this._c_pre.caller.arguments, condition);
+          }
         }
       },
 
