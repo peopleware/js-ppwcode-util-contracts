@@ -1,6 +1,6 @@
 {
-  "name": "be.ppwcode-util-contracts",
-  "version": "I 0.0",
+  "name": "ppwcode-util-contracts-I",
+  "version": "1.0",
   "description": "First trials for design-by-contract in dojo.",
   "keywords": [
     "PeopleWare",
