@@ -14,19 +14,11 @@
  limitations under the License.
  */
 
-define(["dojo/_base/declare", "doh/main", "dojo/_base/lang"],
+define(
+  ["dojo/_base/declare", "doh/main", "dojo/_base/lang"],
   function(declare, doh, lang) {
 
     console.log("Loading ppwcode contracts doh extension");
-
-    var InvariantViolationError = declare(null, {
-      instance: null,
-      invariant: null,
-      constructor: function(instance, invariant) {
-        this.instance = instance;
-        this.invariant = invariant;
-      }
-    });
 
     doh._flattenInvars = function(context, /*Array*/ a, /*Array*/ acc) {
       doh.isNot(null, context);
@@ -39,9 +31,9 @@ define(["dojo/_base/declare", "doh/main", "dojo/_base/lang"],
         var el = a[i];
         if (el instanceof Function) {
           acc.push({
-            testMethodForPrint: el.toString(),
-            testMethodInContext: lang.hitch(context, el)
-          });
+                     testMethodForPrint: el.toString(),
+                     testMethodInContext: lang.hitch(context, el)
+                   });
         }
         else {
           // we expect an object {condition: /*Function (optional)*/, objectSelector: /*Function*/, invars: /*Array*/ of /*Function*/
@@ -87,8 +79,9 @@ define(["dojo/_base/declare", "doh/main", "dojo/_base/lang"],
 
         // inject for this
         var result = invar.testMethodInContext();
-        if (! result) {
-          throw new doh._AssertFailure("invariant error: " + invar.testMethodForPrint + " (on " + subject.toString() + ")");
+        if (!result) {
+          throw new doh._AssertFailure("invariant error: " + invar.testMethodForPrint + " (on " + subject.toString() +
+                                       ")");
         }
       }
     };

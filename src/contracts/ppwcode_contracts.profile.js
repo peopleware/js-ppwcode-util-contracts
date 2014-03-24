@@ -15,6 +15,7 @@
  */
 
 var profile = (function() {
+
   function isTest(filename, mid) {
     return filename.indexOf("test/") >= 0 || filename.indexOf("doh") >= 0;
   }
@@ -42,4 +43,5 @@ var profile = (function() {
       }
     }
   };
+
 })();
