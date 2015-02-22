@@ -18,6 +18,7 @@ define(
   ["dojo/_base/declare", "dojo/_base/lang", "ppwcode-util-oddsAndEnds/js", "dojo/has"],
   function(declare, lang, js, has) {
 
+    //noinspection LocalVariableNamingConventionJS
     var _PreconditionViolationError = declare([Error], {
       instance: null,
       method: null,
@@ -38,6 +39,7 @@ define(
       }
     });
 
+    //noinspection LocalVariableNamingConventionJS
     var _ContractMixin = declare(
       null,
       {

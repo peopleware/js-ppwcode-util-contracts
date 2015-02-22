@@ -14,17 +14,20 @@
   limitations under the License.
 */
 
-var profile = (function() {
+var profile = (function() { // jshint ignore:line
 
-  function isTest(filename, mid) {
+  //noinspection JSUnusedLocalSymbols
+  function isTest(filename, mid) { // jshint ignore:line
     return filename.indexOf("test/") >= 0 || filename.indexOf("doh") >= 0;
   }
 
-  function isCopyOnly(filename, mid) {
+  //noinspection JSUnusedLocalSymbols
+  function isCopyOnly(filename, mid) { // jshint ignore:line
     return filename.indexOf(".html") >= 0;
   }
 
-  function isAmd(filename, mid) {
+  //noinspection JSUnusedLocalSymbols
+  function isAmd(filename, mid) { // jshint ignore:line
     return filename.indexOf(".json") < 0 && filename.indexOf(".js") >= 0 && filename.indexOf(".profile.js") < 0;
   }
 

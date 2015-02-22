@@ -15,8 +15,8 @@
 */
 
 define(
-  ["dojo/_base/declare", "doh/main", "dojo/_base/lang"],
-  function(declare, doh, lang) {
+  ["doh/main", "dojo/_base/lang"],
+  function(doh, lang) {
 
     console.log("Loading ppwcode contracts doh extension");
 
@@ -93,7 +93,7 @@ define(
       //    The test failed.
       var msg = "test failed";
       if (error) {
-        msg += ('" + error + "');
+        msg += ("\" + error + \"");
       }
       throw new doh._AssertFailure(msg, hint);
     };
