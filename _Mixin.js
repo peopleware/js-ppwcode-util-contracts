@@ -111,7 +111,7 @@ define(
           var exists = this._c_prop_mandatory(s, pName);
           if (exists) {
             var value = s[pName];
-            return typeof value === "string" && value != "";
+            return typeof value === "string" && value !== "";
           }
           else {
             return false;
