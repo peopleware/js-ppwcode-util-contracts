@@ -39,6 +39,24 @@ define(
       }
     });
 
+    function isInstanceOf(value, Constr) {
+      if (!value) {
+        return true;
+      }
+      else if (js.typeOf(Constr) === "function") {
+        return value.isInstanceOf ? value.isInstanceOf(Constr) :
+               value instanceof Constr;
+      }
+      else if (js.typeOf(Constr) === "object") {
+        // value must be an EnumerationValue, but we cannot test that here, because that would
+        // create a dependency loop
+        return value.isValueOf && value.isValueOf(Constr);
+      }
+      else {
+        throw "ERROR: Constructor must be a Constructor function, or EnumerationValue definition";
+      }
+    }
+
     //noinspection LocalVariableNamingConventionJS
     var _ContractMixin = declare(
       null,
@@ -236,9 +254,10 @@ define(
           }
         },
 
-        _c_prop_array: function(subject, propName) {
+        _c_prop_array: function(subject, propName, Constructor) {
           // summary:
-          //   the property subject[propName] is defined, and if it is not-null, it is an Array
+          //   the property subject[propName] is defined, and if it is not-null, it is an Array.
+          //   All elements are of type `Constructor`, if given.
           // description:
           //   if there is only 1 argument, subject is taken to be this
           var pName;
@@ -254,7 +273,10 @@ define(
           var exists = this._c_prop(s, pName);
           if (exists) {
             var value = s[pName];
-            return value === null || value === undefined || lang.isArray(value);
+            return value === null
+                   || value === undefined
+                   || (lang.isArray(value)
+                       && (!Constructor || value.every(function(e) {return isInstanceOf(e, Constructor)})));
           }
           else {
             return false;
@@ -314,17 +336,8 @@ define(
             if (!value) {
               return true;
             }
-            else if (js.typeOf(Constr) === "function") {
-              return value.isInstanceOf ? value.isInstanceOf(Constr) :
-                     value instanceof Constr;
-            }
-            else if (js.typeOf(Constr) === "object") {
-              // value must be an EnumerationValue, but we cannot test that here, because that would
-              // create a dependency loop
-              return value.isValueOf && value.isValueOf(Constr);
-            }
             else {
-              throw "ERROR: Constructor must be a Constructor function, or EnumerationValue definition";
+              return isInstanceOf(value, Constr);
             }
           }
           else {
