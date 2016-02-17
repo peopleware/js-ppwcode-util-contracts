@@ -31,7 +31,7 @@ define(
         this.caller = (caller && caller.nom) || caller;
         this.arguments = callArguments;
         this.condition = condition;
-        console.info(this.stack);
+        console.trace();
       },
       toString: function() {
         return "Precondition violation: " + this.condition +
